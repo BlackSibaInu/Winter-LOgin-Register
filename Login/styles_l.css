@@ -1,0 +1,205 @@
+:root {
+    --primary-color: #2f2e30; 
+    --secondary-color: #8b7765; 
+    --background-gradient: linear-gradient(135deg, #2d2c2e, #595a5c, #2e2d30, #191919, #8b7765);
+    --text-color: #d1b07d;
+    --input-border-color: #555; 
+    --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--background-gradient);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--text-color);
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.form-container {
+    background: rgba(45, 44, 46, 0.9); 
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 30px;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    align-self: center;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: 2px solid var(--input-border-color);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(66, 71, 105, 0.1);
+}
+
+button {
+    width: 100%;
+    padding: 12px 20px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button[type="submit"] {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+button[type="submit"]:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1);
+}
+
+.password-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.password-container input {
+    width: 100%;
+    padding-right: 40px; 
+}
+
+#toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 31%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+#toggle-password svg {
+    width: 20px;
+    height: 20px;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+#toggle-password:hover svg {
+    color: var(--secondary-color);
+}
+
+.error-toast, .success-toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 30px;
+    border-radius: 8px;
+    z-index: 1000;
+    color: white;
+    font-weight: 500;
+    animation: fadeInOut 3s ease;
+}
+
+.error-toast {
+    background-color: #ff4d4d;
+}
+
+.success-toast {
+    background-color: #4CAF50;
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    10%, 90% { opacity: 1; }
+}
+
+#snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.snowflake {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: fall linear infinite;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh); 
+    }
+    
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        width: 95%;
+        padding: 20px;
+    }
+}
